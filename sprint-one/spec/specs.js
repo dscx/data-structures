@@ -22,7 +22,7 @@ define([
     var instantiator = variant === 'pseudoclassical' ? Stack : makeStack;
     var prototypeOfInstances = variant === 'prototypal' && stackMethods;
 
-    beforeEach(function(){
+beforeEach(function(){
       if(variant === 'pseudoclassical'){
         stack = new instantiator();
       } else {
