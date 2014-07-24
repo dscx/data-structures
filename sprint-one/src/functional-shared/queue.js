@@ -2,37 +2,39 @@ var makeQueue = function(){
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
 
-  var someInstance = mixIn({});
+  var someInstance = _.defaults({}, queueMethods);
 
   // Use an object with numeric keys to store values
-  var storage = {};
-  // var instanceSize = 0;
-  var nextUp = 1;
-  var newItem = 1;
-
-
-  someInstance.enqueue = function(value){
-    someInstance.instanceSize++;
-    storage[newItem] = value;
-    newItem++;
-  };
-
-  someInstance.dequeue = function(){
-    var save = storage[nextUp];
-    delete storage[nextUp];
-    nextUp++;
-    if(someInstance.instanceSize > 0){someInstance.instanceSize--;}
-    return save;
-  };
-
-  // someInstance.size = function(){
-  //   return instanceSize;
-  // };
+  someInstance.storage = {};
+  someInstance.instanceSize = 0;
+  someInstance.nextUp = 1;
+  someInstance.newItem = 1;
 
   return someInstance;
 };
 
-var queueMethods = {};
+var queueMethods = {
+
+  enqueue : function(value){
+    this.instanceSize++;
+    this.storage[this.newItem] = value;
+    this.newItem++;
+  },
+
+  dequeue : function(){
+    var save = this.storage[this.nextUp];
+    delete this.storage[this.nextUp];
+    this.nextUp++;
+    if(this.instanceSize > 0){this.instanceSize--;}
+    return save;
+  },
+
+  size : function(){
+    return this.instanceSize;
+  }
+
+
+};
 
 
 

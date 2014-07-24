@@ -4,7 +4,7 @@ var makeStack = function() {
 
   
 
-var someInstance = mixIn({});
+var someInstance = _.defaults({}, stackMethods);
 someInstance.storage = {};
 someInstance.instanceSize = 0;
 return someInstance;
@@ -12,34 +12,26 @@ return someInstance;
 };
 
 
-var stackMethods = {};
+var stackMethods = {
+  
+
+  push : function(value){
+    this.instanceSize++;
+    this.storage[this.instanceSize] = value;
+
+  },
+  pop : function(){
+    var save = this.storage[this.instanceSize];
+    delete this.storage[this.instanceSize];
+    if(this.instanceSize > 0){this.instanceSize--;}
+    return save;
+
+  },
 
 
+  size : function() {
+    return this.instanceSize;
+  }
 
-
-
-var push = function(value){
-  this.instanceSize++;
-  this.storage[this.instanceSize] = value;
 
 };
-var pop = function(){
-  var save = this.storage[this.instanceSize];
-  delete this.storage[this.instanceSize];
-  if(this.instanceSize > 0){this.instanceSize--;}
-  return save;
-
-};
-
-
-var size = function() {
-  return this.instanceSize;
-};
-
-var mixIn = function(obj){
-  obj.size = size;
-  obj.pop = pop;
-  obj.push = push;
-  return obj;
-};
-
