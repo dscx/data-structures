@@ -2,13 +2,16 @@ var makeQueue = function(){
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
 
-  var someInstance = _.defaults({}, queueMethods);
 
   // Use an object with numeric keys to store values
-  someInstance.storage = {};
-  someInstance.instanceSize = 0;
-  someInstance.nextUp = 1;
-  someInstance.newItem = 1;
+  var someInstance = {
+    storage : {},
+    instanceSize : 0,
+    nextUp : 1,
+    newItem : 1
+  };
+  
+  _.defaults(someInstance, queueMethods);
 
   return someInstance;
 };
