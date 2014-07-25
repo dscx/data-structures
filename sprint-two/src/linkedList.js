@@ -7,14 +7,16 @@ var makeLinkedList = function(){
     var newNode = makeNode(value);
     if(!list.tail){
       list.tail = newNode;
+      if(!list.head){
+         list.head = newNode;
+         list.head.next = list.tail;
+      }
     } else {
       var save = list.tail;
       list.tail = newNode;
       save.next = list.tail;
-      if(!list.head){
-          list.head = save;
-      }
-    }
+     
+      } 
   };
 
   list.removeHead = function(){
@@ -23,9 +25,8 @@ var makeLinkedList = function(){
     //define new head
     var saveHead = list.head;
     delete list.head;
-    list.head = saveHead.next
-
-   
+    list.head = saveHead.next;
+    return saveHead.value;
 
   };
 
@@ -33,9 +34,20 @@ var makeLinkedList = function(){
     //scan through each "node'' or linked "array"
     //if target exists do work otherwise return something
     //return boolean
-
-
-
+    var answer = false;
+    var obj = list.head;
+    for(var prop in list){
+      if(obj.value === target){
+        answer = true;
+      } 
+      else if (obj.next === null) {
+        return answer;
+      } 
+      else { 
+        obj = obj.next;
+      }
+    }
+      return answer;
   };
 
   return list;
