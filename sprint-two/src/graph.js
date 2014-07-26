@@ -33,18 +33,18 @@ Graph.prototype.removeNode = function(node){
 };
 
 Graph.prototype.getEdge = function(fromNode, toNode){
-    if(this[fromNode].edges[toNode]){return true;}
-    else{return false;}
+  if(this[fromNode].edges[toNode]){return true;}
+  else{return false;}
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){
-    console.log(fromNode);
-    this[fromNode].edges[toNode] = "edgeNode";
-    this[toNode].edges[fromNode] = "edgeNode";
+  this[fromNode].edges[toNode] = "edgeNode";
+  this[toNode].edges[fromNode] = "edgeNode";
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
-
+  delete this[fromNode].edges[toNode];
+  delete this[toNode].edges[fromNode];
 };
 
 /*
