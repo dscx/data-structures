@@ -28,17 +28,11 @@ var binaryMethods ={
  var chooseDirection = value < this.value ? "left" : "right";
 
   traverse(this, chooseDirection);
-  
-    //determine which to direction to go
-      //continue until no "children" in planned direction
-      //create a new object
-        //assign property
+
   },
   contains: function(value){
 
 var traverse = function(node){
-  console.log(node);
-  console.log(value);
   if(node.value === value){
     return true;
   }
@@ -56,13 +50,26 @@ var traverse = function(node){
     }
     }
 };
-  //debugger;
   return traverse(this);
 
 
   },
-  depthFirstLog: function(){
+  depthFirstLog: function(callback){
+    callback(this.value);
+    
+    var depth = function (node){
 
+      if(node.left){
+        callback(node.left.value);
+        depth(node.left);
+      }
+      if(node.right){
+        callback(node.right.value);
+        depth(node.right);
+      }
+    };
+
+    depth(this);
   }
 
 };
