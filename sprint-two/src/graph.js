@@ -15,6 +15,9 @@ Graph.prototype.addNode = function(newNode, toNode){
   if(this.nodeCounter === 2){
       this.addEdge(this.firstNode, newNode);
   }
+  if(toNode){
+    this.addEdge(newNode, toNode);
+  }
 
 };
 
@@ -30,7 +33,6 @@ Graph.prototype.removeNode = function(node){
 };
 
 Graph.prototype.getEdge = function(fromNode, toNode){
-    console.log(this);
     if(this[fromNode].edges[toNode]){return true;}
     else{return false;}
 };
@@ -42,6 +44,7 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
+
 };
 
 /*
