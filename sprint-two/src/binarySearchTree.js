@@ -26,7 +26,7 @@ var binaryMethods ={
   };
 
  var chooseDirection = value < this.value ? "left" : "right";
-    
+
   traverse(this, chooseDirection);
   
     //determine which to direction to go
@@ -34,7 +34,31 @@ var binaryMethods ={
       //create a new object
         //assign property
   },
-  contains: function(){
+  contains: function(value){
+
+var traverse = function(node){
+  console.log(node);
+  console.log(value);
+  if(node.value === value){
+    return true;
+  }
+  else{
+    if(value < node.value){
+      if(node.left){
+      return traverse(node.left);
+      } return false;
+    }
+    
+    else if(value > node.value){
+     if(node.right){
+      return traverse(node.right);
+      } return false;
+    }
+    }
+};
+  //debugger;
+  return traverse(this);
+
 
   },
   depthFirstLog: function(){
