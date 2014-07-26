@@ -45,8 +45,15 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 Graph.prototype.removeEdge = function(fromNode, toNode){
   delete this[fromNode].edges[toNode];
   delete this[toNode].edges[fromNode];
+  if(Object.keys(this[fromNode].edges).length === 0){
+      delete this[fromNode];
+  }if (Object.keys(this[toNode].edges).length ===0){
+      delete this[toNode];
+  }
 };
 
+
+// Object.keys(obj).length
 /*
  * Complexity: What is the time complexity of the above functions?
  */
