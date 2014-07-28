@@ -10,10 +10,10 @@ var makeLinkedList = function(){
     if(!list.tail){
       list.tail = newNode;
       if(!list.head){
-         list.head = newNode;
-         list.head.next = list.tail;
-         //list.tail.previous = list.head;
-      }
+        list.head = list.tail;
+        list.head.next = list.tail.value;
+        list.tail.previous = list.head;
+       }
     } else {
       var save = list.tail;
       list.tail = newNode;
@@ -36,12 +36,21 @@ var makeLinkedList = function(){
   };
 
   list.addToHead = function(value){
-    //save current head
-    var saveHead = list.head;
+    //check if list.head exists yet
+    //debugger;
+    if(!list.head) {
+      list.head = list.head || makeNode(value);
+    } 
+    else {
+   //copy current head
+   var saveHead = list.head;
     //make new head
     list.head = makeNode(value);
       //assign new head next value to save value
-    list.head.next = saveHead;
+    list.head.next = saveHead.value;
+    // console.log(saveHead.next + ": " + "45");
+    saveHead.previous = list.head.value;
+    };
     return  list.head.value;
 
 

@@ -69,6 +69,7 @@ describe('linkedList', function() {
   });
 
    it('should be able to move both directions through the list', function(){
+    //debugger;
     linkedList.addToTail(4);
     linkedList.addToTail(5);
     linkedList.addToHead(1);
