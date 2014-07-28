@@ -69,14 +69,14 @@ describe('linkedList', function() {
   });
 
    it('should be able to move both directions through the list', function(){
-    //debugger;
     linkedList.addToTail(4);
     linkedList.addToTail(5);
     linkedList.addToHead(1);
     linkedList.addToTail(6);
     linkedList.addToTail(7);
-    expect(linkedList.tail.previous).to.equal(6);
+    expect(linkedList.tail.previous.value).to.equal(6);
     expect(linkedList.head.previous).to.equal(null);
-    expect(linkedList.tail.previous.previous).to.equal(5);
+     expect(linkedList.head.next).to.equal(4);
+    expect(linkedList.tail.previous.previous.value).to.equal(5);
   });
 });
